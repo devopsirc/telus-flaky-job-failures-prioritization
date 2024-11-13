@@ -37,3 +37,5 @@ RQ1-3. [Flaky Failure Categories RFM Analysis](./src/03_label_prioritization.ipy
 * [Addition RFM Analysis results](./src/04_labels_rfm_analysis.ipynb)
 
 [RQ4. What are the priority flaky failure categories?](./src/04_labels_rfm_clustering.ipynb)
+
+Additionnal results materials can be found in the [`src/results`](./src/results/) directory. It includes full figures, computed RFM values, and clustering model and analysis results.

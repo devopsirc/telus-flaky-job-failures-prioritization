@@ -21,7 +21,7 @@ Create (or activate) virtual environment
 poetry shell
 ```
 
-## Study
+## Study Replication Package
 
 In the following, we reference Jupyter Notebooks and Python scripts present in this repository, that we used to answer the RQs.
 

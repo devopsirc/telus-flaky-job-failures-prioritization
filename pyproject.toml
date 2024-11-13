@@ -1,0 +1,28 @@
+[tool.poetry]
+name = "telus-flaky-failures-prioritization"
+version = "0.1.0"
+description = ""
+authors = ["Henri Aïdasso <ahenrij@gmail.com>"]
+readme = "README.md"
+packages = [{include = "src"}]
+
+[tool.poetry.dependencies]
+python = "^3.10"
+pandas = "^2.2.2"
+plotly = "^5.21.0"
+nbformat = "^5.10.4"
+matplotlib = "^3.8.4"
+ipykernel = "^6.29.4"
+clean-text = {extras = ["gpl"], version = "^0.6.0"}
+scikit-learn = "^1.5.0"
+statsmodels = "^0.14.2"
+holidays = "^0.56"
+scipy = "^1.14.1"
+
+
+[tool.poetry.group.dev.dependencies]
+ipykernel = "^6.29.4"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"

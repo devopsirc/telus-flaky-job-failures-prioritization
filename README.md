@@ -1,4 +1,4 @@
-# Understanding and Prioritizing Flaky Failures at TELUS
+# Understanding and Prioritizing Flaky Failure Categories
 
 This repository contains the replication package of identifying flaky failure categories and using RFM analysis to prioritize them.
 

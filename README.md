@@ -29,13 +29,13 @@ __PQ.__ [Data Labeling Process](./src/02_failure_categories_labeling.ipynb)
 
 * Final Failure Categories Regexes __[patterns_refined.csv](./src/scripts/patterns_refined.csv)__
 
-__RQ1-3.__ [Flaky Failure Categories RFM Analysis](./src/03_label_prioritization.ipynb)
+__RQ1-3.__ [Flaky Failure Categories Frequency-Cost-Evolution Analysis](./src/03_label_prioritization.ipynb)
 
 * RQ1. What are the main categories of flaky failures?
 * RQ2. Which failure categories are the most costly?
 * RQ3. How do the failure categories evolve over time?
-* [Additional RFM Analysis](./src/04_labels_rfm_analysis.ipynb)
+* [Complementary RFM Analysis](./src/04_labels_rfm_analysis.ipynb)
 
-__RQ4.__ [What are the priority flaky failure categories?](./src/04_labels_rfm_clustering.ipynb)
+__RQ4.__ What are the priority flaky failure categories? [RFM Clustering](./src/04_labels_rfm_clustering.ipynb)
 
 [`src/results`](./src/results/) directory contains additional materials including full figures, computed RFM values, and clustering model and analysis results.

@@ -27,7 +27,7 @@ In the following, we reference Jupyter Notebooks present in this repository, tha
 
 __PQ.__ [Data Labeling Process](./src/02_failure_categories_labeling.ipynb)
 
-Final Failure Categories Regexes __[patterns_refined.csv](./src/scripts/patterns_refined.csv)__
+* Final Failure Categories Regexes __[patterns_refined.csv](./src/scripts/patterns_refined.csv)__
 
 __RQ1-3.__ [Flaky Failure Categories RFM Analysis](./src/03_label_prioritization.ipynb)
 

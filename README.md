@@ -23,7 +23,7 @@ poetry shell
 
 ## Study
 
-In the following, we reference Jupyter Notebooks present in this repository, that we used to answer the RQs.
+In the following, we reference Jupyter Notebooks and Python scripts present in this repository, that we used to answer the RQs.
 
 __PQ.__ [Data Labeling Process](./src/02_failure_categories_labeling.ipynb)
 

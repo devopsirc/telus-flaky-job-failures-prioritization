@@ -1,6 +1,7 @@
-# Understanding and Prioritizing Flaky Failure Categories
+# On the Diagnosis of Flaky Job Failures
 
-This repository contains the replication package of identifying flaky failure categories and using RFM analysis to prioritize them.
+Replication package of the paper [On the Diagnosis of Flaky Job Failures:
+Understanding and Prioritizing Failure Categories](/) accepted at the 47th International Conference on Software Engineering ICSE SEIP 2025.
 
 ## Requirements
 
@@ -29,7 +30,7 @@ __PQ.__ [Data Labeling Process](./src/02_failure_categories_labeling.ipynb)
 
 * Final Failure Categories Regexes __[patterns_refined.csv](./src/scripts/patterns_refined.csv)__
 
-__RQ1-3.__ [Flaky Failure Categories Frequency-Cost-Evolution Analysis](./src/03_label_prioritization.ipynb)
+__RQ1-3.__ [Flaky Failure Categories' Analysis of Frequency, Costs, and Evolution](./src/03_label_prioritization.ipynb)
 
 * RQ1. What are the main categories of flaky failures?
 * RQ2. Which failure categories are the most costly?
@@ -38,4 +39,12 @@ __RQ1-3.__ [Flaky Failure Categories Frequency-Cost-Evolution Analysis](./src/03
 
 __RQ4.__ What are the priority flaky failure categories? [RFM Clustering](./src/04_labels_rfm_clustering.ipynb)
 
-[`src/results`](./src/results/) directory contains additional materials including full figures, computed RFM values, and clustering model and analysis results.
+## Additional Materials
+
+The directory [`src/results/`](./src/results/) contains additional research results materials including:
+
+* Full figures of categories evolution and related costs
+* Computed RFM values and scores
+* Scatter plots of Recency vs Frequency, Frequency vs Monetary, and Recency vs Monetary values
+* Correlation matrix of RFM scores used for K-means clustering
+* Clustering model dump and clustering results.

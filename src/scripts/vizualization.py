@@ -19,9 +19,6 @@ def plot_categories(df, col: str = "category", show_freq: bool = True, config:di
     df_copy[col] = df_copy[col].dropna(axis=0)
     categories_count = df_copy[col].value_counts().reset_index()
 
-    #print(df.shape[0])
-    #print(f"{categories_count.shape[0]} categories found")
-
     fig = px.bar(categories_count, x=col, y="count", text="count", template="simple_white")
     fig.update_layout(
         font_family="Rockwell",

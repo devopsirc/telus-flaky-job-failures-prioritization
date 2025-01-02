@@ -1,5 +1,5 @@
 [tool.poetry]
-name = "telus-flaky-failures-prioritization"
+name = "telus-flaky-job-failures-prioritization"
 version = "0.1.0"
 description = ""
 authors = ["Henri Aïdasso <ahenrij@gmail.com>"]
@@ -10,13 +10,13 @@ packages = [{include = "src"}]
 python = "^3.10"
 pandas = "^2.2.2"
 clean-text = {extras = ["gpl"], version = "^0.6.0"}
+scikit-learn = "^1.5.0"
 
 
 [tool.poetry.group.dev.dependencies]
 ipykernel = "^6.29.4"
 kaleido = "0.2.1"
 nbformat = "^5.10.4"
-scikit-learn = "^1.5.0"
 matplotlib = "^3.8.4"
 plotly = "^5.21.0"
 

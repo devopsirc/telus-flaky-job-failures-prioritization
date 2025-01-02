@@ -1,11 +1,6 @@
 """Utilities functions."""
 
-import holidays
-from datetime import datetime, timedelta
-
-# Canada, ON Holidays
-CA_HOLIDAYS = holidays.country_holidays("CA", subdiv="ON")
-
+from datetime import datetime
 
 def compute_job_deltas(row):
     """Returns the list of time gaps in seconds between jobs' finition and creation timestamps."""
@@ -15,8 +10,7 @@ def compute_job_deltas(row):
         start_date = row["finished_at"][i - 1]
         end_date = row["created_at"][i]
         delta = (end_date - start_date).total_seconds()
-        # w = count_weekend_and_holidays(start_date, end_date)
-        deltas.append(delta) # add delta minus weekend and holidays in seconds
+        deltas.append(delta) # add delta minus in seconds
 
     return deltas
 
@@ -30,19 +24,6 @@ def compute_time_deltas(date_times: list[datetime]):
         deltas.append(delta)
 
     return deltas
-
-
-def count_weekend_and_holidays(start_date, end_date):
-    # Initialize a counter for weekend days
-    weekend_holidays = 0
-    # Iterate through each day in the date range
-    current_date = start_date + timedelta(days=1)
-    while current_date < end_date:
-        if (current_date.weekday() in [5, 6]) or (current_date in CA_HOLIDAYS) :  # 5 = Saturday, 6 = Sunday
-            weekend_holidays += 1
-        current_date += timedelta(days=1)
-
-    return weekend_holidays
 
 def seconds_to_human_readable(seconds: int):
     """Convert seconds to human readable string."""

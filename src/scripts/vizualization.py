@@ -32,7 +32,7 @@ def plot_categories(df, col: str = "category", show_freq: bool = True, config:di
     )
     fig.update_yaxes(showgrid=True,)
     fig.update_traces(textangle=0, textposition="outside", textfont_color="#a2a2a2", cliponaxis=False)
-    fig.show(config=config)
+    fig.show(renderer="svg", config=config)
 
 
 def plot_count_timeseries(
@@ -78,4 +78,4 @@ def plot_count_timeseries(
     )
     # show the figure
     fig = go.Figure(data=plot_data, layout=layout)
-    fig.show()
+    fig.show(renderer="svg")

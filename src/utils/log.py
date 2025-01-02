@@ -1,9 +1,9 @@
-"""Preprocessing build log."""
+"""Pre-processing build log."""
 
 import os
 import re
 from cleantext import clean
-from src.scripts import constants
+from src.utils import constants
 
 
 def filter_logs(line: str):

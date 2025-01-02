@@ -1,7 +1,7 @@
 [tool.poetry]
 name = "telus-flaky-job-failures-prioritization"
 version = "0.1.0"
-description = ""
+description = "Understanding and Prioritizing Flaky Job Failure Categories"
 authors = ["Henri Aïdasso <ahenrij@gmail.com>"]
 readme = "README.md"
 packages = [{include = "src"}]
@@ -11,7 +11,6 @@ python = "^3.10"
 pandas = "^2.2.2"
 clean-text = {extras = ["gpl"], version = "^0.6.0"}
 scikit-learn = "^1.5.0"
-
 
 [tool.poetry.group.dev.dependencies]
 ipykernel = "^6.29.4"

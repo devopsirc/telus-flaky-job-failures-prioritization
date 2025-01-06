@@ -24,25 +24,23 @@ poetry shell
 
 ## Study Replication Package
 
-In the following, we reference Jupyter Notebooks and Python scripts present in this repository, that we used to answer the RQs.
+In the following, we reference Jupyter Notebooks present in this repository, that we used to answer the RQs.
 
-__PQ.__ [Data Labeling Process](./src/02_failure_categories_labeling.ipynb)
+__PQ.__ [Data Labeling Process](./study/02_failure_categories_labeling.ipynb)
 
-* Final v2 regexes used in the labeling tool: [patterns_refined.csv](./src/scripts/patterns_refined.csv)
-
-__RQ1-3.__ [Flaky Failure Categories' Analysis of Frequency, Costs, and Evolution](./src/03_label_prioritization.ipynb) ([Complementary RFM Analysis](./src/04_labels_rfm_analysis.ipynb))
+__RQ1-3.__ [Flaky Failure Categories' Analysis of Frequency, Costs, and Evolution](./study/03_label_prioritization.ipynb)
 
 * RQ1. What are the main categories of flaky failures?
 * RQ2. Which failure categories are the most costly?
 * RQ3. How do the failure categories evolve over time?
 
-__RQ4.__ [RFM Modeling and Clustering](./src/04_labels_rfm_clustering.ipynb)
+__RQ4.__ [RFM Modeling and Clustering](./study/04_labels_rfm_clustering.ipynb)
 
 * RQ4. What are the priority flaky failure categories?
 
 ## Additional Materials
 
-The [`src/results/`](./src/results/) directory contains additional research results materials including:
+The [`study/results/`](./study/results/) directory contains additional research results materials including:
 
 * Full figures of categories evolution and related costs
 * Computed RFM values and scores

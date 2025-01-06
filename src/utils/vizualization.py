@@ -29,6 +29,8 @@ def plot_categories(df, col: str = "category", show_freq: bool = True, config:di
         autosize=True,
         margin=dict(l=50, r=50, b=0, t=0, pad=0),
         legend=dict(yanchor="top", y=0.99, xanchor="left", x=0.95),
+        width=1200,
+        height=400
     )
     fig.update_yaxes(showgrid=True,)
     fig.update_traces(textangle=0, textposition="outside", textfont_color="#a2a2a2", cliponaxis=False)

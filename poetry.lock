@@ -145,6 +145,20 @@ gpl = ["unidecode (>=1.1.1,<2.0.0)"]
 sklearn = ["pandas (>=1.0.0,<2.0.0)", "scikit-learn (>=1.0.0,<2.0.0)"]
 
 [[package]]
+name = "click"
+version = "8.1.8"
+description = "Composable command line interface toolkit"
+optional = false
+python-versions = ">=3.7"
+files = [
+    {file = "click-8.1.8-py3-none-any.whl", hash = "sha256:63c132bbbed01578a06712a2d1f497bb62d9c1c0d329b7903a866228027263b2"},
+    {file = "click-8.1.8.tar.gz", hash = "sha256:ed53c9d8990d83c2a27deae68e4ee337473f6330c040a31d4225c9574d16096a"},
+]
+
+[package.dependencies]
+colorama = {version = "*", markers = "platform_system == \"Windows\""}
+
+[[package]]
 name = "colorama"
 version = "0.4.6"
 description = "Cross-platform colored terminal text."
@@ -1792,4 +1806,4 @@ files = [
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.10"
-content-hash = "5f951a83d66dba267826b8ca1ce14aa5cb5ed145c4d649d9d1948bbabf151ac8"
+content-hash = "18538f7ac0a02e0c47004bdab3de5206302a3f8fdc61f2870d1c6c17a7a5e0e2"

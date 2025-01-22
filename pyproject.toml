@@ -11,6 +11,7 @@ python = "^3.10"
 pandas = "^2.2.2"
 clean-text = {extras = ["gpl"], version = "^0.6.0"}
 scikit-learn = "^1.5.0"
+click = "^8.1.8"
 
 [tool.poetry.group.dev.dependencies]
 ipykernel = "^6.29.4"

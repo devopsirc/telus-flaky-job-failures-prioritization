@@ -8,8 +8,7 @@ def infer_category(row, patterns):
     if row["failure_reason"] == "stuck_or_timeout_failure":
         return "limits_exceeded", row["failure_reason"]
     for _, pattern in patterns.iterrows():
-        logs = row["log"]
-        if re.search(pattern["regex"], logs, flags=re.IGNORECASE) is not None:
+        if re.search(pattern["regex"], row["log"], flags=re.IGNORECASE) is not None:
             return pattern["category"], pattern["subcategory"]
     return None, None
 

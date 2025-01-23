@@ -10,7 +10,7 @@ from src.flakeranker.analyzer import utils as analyzer_utils
 from src.flakeranker import utils
 
 
-def run(input_file_path: str, output_file_path: str):
+def analyze(input_file_path: str, output_file_path: str):
     """Takes as input the path to full `.csv` jobs dataset including labeled flaky jobs. Output of the `labeler`.
 
     Outputs: `categories.csv` including analysis results for each failure category as presented in the following columns.
@@ -28,7 +28,7 @@ def run(input_file_path: str, output_file_path: str):
     # preprocessing
     jobs["created_at"] = pd.to_datetime(jobs["created_at"], format="mixed", utc=True)
     jobs["finished_at"] = pd.to_datetime(jobs["finished_at"], format="mixed", utc=True)
-    labeled_flaky_jobs = jobs[jobs["flaky"] & jobs["status"] == "failed"]
+    labeled_flaky_jobs = jobs[jobs["flaky"] & ~jobs["category"].isna()]
 
     ##########################
     #        Frequency       #
@@ -66,4 +66,4 @@ def run(input_file_path: str, output_file_path: str):
 if __name__ == "__main__":
     input = sys.argv[1]
     output = sys.argv[2]
-    run(input, output)
+    analyze(input, output)

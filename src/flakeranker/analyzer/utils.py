@@ -4,6 +4,7 @@ import numpy as np
 import pandas as pd
 
 from src.flakeranker.core.config import settings
+from src.flakeranker import utils
 
 
 def first_failure_finition_date(row):
@@ -24,30 +25,6 @@ def first_failure_category(row, labeled_flaky_jobs: pd.DataFrame):
             if job_id in list(indexed_labeled_flaky_jobs.index.values):
                 return indexed_labeled_flaky_jobs.loc[job_id, "category"]
             return None
-
-
-def list_flaky_rerun_suites(jobs: pd.DataFrame):
-    """Returns the list of rerun suites that contains at least one success and one failed jobs.
-
-    Each result row is a rerun suite with a column id containing the ordered of rerun suite's jobs.
-    """
-    grouped_jobs = (
-        jobs[jobs["status"].isin(["success", "failed"])]
-        .sort_values(by=["created_at"], ascending=True)
-        .groupby(["project", "commit", "name"])
-        .aggregate(
-            {
-                "id": list,
-                "status": list,
-                "created_at": list,
-                "finished_at": list,
-            }
-        )
-    ).reset_index()
-    flaky_reruns = grouped_jobs[
-        grouped_jobs["status"].map(lambda x: set(["success", "failed"]).issubset(x))
-    ].reset_index(drop=True)
-    return flaky_reruns
 
 
 def recency(creation_dates):
@@ -103,7 +80,7 @@ def compute_categories_diagnosis_costs(
 ):
     """Compute diagnosis time cost per category."""
     # Get all rerun suites' categores and diagnosis times.
-    flaky_reruns = list_flaky_rerun_suites(jobs)
+    flaky_reruns = utils.list_flaky_rerun_suites(jobs)
     flaky_reruns = compute_diagnosis_time_delays(flaky_reruns, labeled_flaky_jobs)
 
     # Compute results dataframe by apply formula

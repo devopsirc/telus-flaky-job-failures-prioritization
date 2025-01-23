@@ -16,10 +16,6 @@ def compute_job_deltas(row):
     return deltas
 
 
-def join_dfs(df1, df2, key: str = "category"):
-    return df1.set_index(key).join(df2.set_index(key)).reset_index()
-
-
 def compute_time_deltas(date_times: list[datetime]):
     """Return time gaps from an array of timestamps."""
     date_times.sort()

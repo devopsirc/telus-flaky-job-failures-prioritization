@@ -1,4 +1,4 @@
-regex,category,subcategory,comments
+regex,group,category,comments
 password.*login failed.*unauthorized,unauthorized_access,ocp_auth_failed,
 unauthorized.*authentication required,unauthorized_access,ocp_auth_required, container push issue credentials must be set
 token provided is invalid or expired,unauthorized_access,ocp_invalid_token,

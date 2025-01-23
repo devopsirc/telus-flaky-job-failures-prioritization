@@ -1,4 +1,4 @@
-regex,category,subcategory,comments
+regex,group,category,comments
 error.* username.*password|password.*login failed.*unauthorized|unauthorized.*authentication required|token provided is invalid or expired,unauthorized_access,container_platform_auth_failure,container push issue credentials must be set
 fatal: unable to access .*git.* error. 403,unauthorized_access,repository_access_denied, https://stackoverflow.com/questions/40006690/gitlab-runner-the-requested-url-returned-error-403 could be due to not being member of the project
 Error.* cannot patch.* with kind Secret.* is invalid|Error.* is forbidden. User.* cannot list resource .* in API group .* in the namespace,infrastructure_issues,helm_resource_error, could also be ci_infrastructure_issues

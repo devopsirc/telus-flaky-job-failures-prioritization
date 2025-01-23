@@ -39,15 +39,15 @@ poetry shell
 
 In the following, we reference Jupyter Notebooks present in this repository, that we used to answer the RQs.
 
-**PQ.** [Data Labeling Process](./study/02_failure_categories_labeling.ipynb)
+**PQ.** [Data Labeling Process](./study/data_labeling_process/02_failure_categories_labeling.ipynb)
 
-**RQ1-3.** [Flaky Failure Categories' Analysis of Frequency, Costs, and Evolution](./study/03_label_prioritization.ipynb)
+**RQ1-3.** [RFM Analysis](./study/rfm_analysis/03_label_prioritization.ipynb)
 
 - RQ1. What are the main categories of flaky failures?
 - RQ2. Which failure categories are the most costly?
 - RQ3. How do the failure categories evolve over time?
 
-**RQ4.** [RFM Modeling and Clustering](./study/04_labels_rfm_clustering.ipynb)
+**RQ4.** [RFM Modeling and Prioritization](./study/rfm_prioritization/04_categories_rfm_prioritization.ipynb)
 
 - RQ4. What are the priority flaky failure categories?
 

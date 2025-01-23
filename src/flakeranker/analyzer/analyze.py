@@ -19,7 +19,7 @@ def analyze(input_file_path: str, output_file_path: str):
         `frequency`: Frequency of the category, i.e. number of jobs.
         `machine_cost`: Machine cost component value for the category, as described in the original paper.
         `diagnosis_cost`: Diagnosis cost component value for the category, as described in the original paper.
-        `cost`: Estimated total cost for the category, as described in the original paper.
+        `cost`: Estimated total monetary cost for the category, as described in the original paper.
         `recency`: Recency value of the category, as computed in the original paper. The number of last jobs considered is parameterizable using the `RECENCY_N_LAST` env. variable.
     """
     # Read input data

@@ -2,6 +2,7 @@
 
 from datetime import datetime
 
+
 def compute_job_deltas(row):
     """Returns the list of time gaps in seconds between jobs' finition and creation timestamps."""
     deltas = []
@@ -10,9 +11,13 @@ def compute_job_deltas(row):
         start_date = row["finished_at"][i - 1]
         end_date = row["created_at"][i]
         delta = (end_date - start_date).total_seconds()
-        deltas.append(delta) # add delta minus in seconds
+        deltas.append(delta)  # add delta minus in seconds
 
     return deltas
+
+
+def join_dfs(df1, df2, key: str = "category"):
+    return df1.set_index(key).join(df2.set_index(key)).reset_index()
 
 
 def compute_time_deltas(date_times: list[datetime]):
@@ -24,6 +29,7 @@ def compute_time_deltas(date_times: list[datetime]):
         deltas.append(delta)
 
     return deltas
+
 
 def seconds_to_human_readable(seconds: int):
     """Convert seconds to human readable string."""

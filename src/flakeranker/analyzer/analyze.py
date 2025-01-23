@@ -6,8 +6,8 @@
 import sys
 import pandas as pd
 
-from src.analyzer import utils as analyzer_utils
-from src.utils import utils
+from src.flakeranker.analyzer import utils as analyzer_utils
+from src.flakeranker import utils
 
 
 def run(input_file_path: str, output_file_path: str):

@@ -1,7 +1,9 @@
+"""Utilities for FlakeRanker Analyzer."""
+
 import numpy as np
 import pandas as pd
 
-from src.core.config import settings
+from src.flakeranker.core.config import settings
 
 
 def first_failure_finition_date(row):

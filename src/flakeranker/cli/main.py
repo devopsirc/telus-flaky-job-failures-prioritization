@@ -3,7 +3,7 @@
 import os
 import click
 
-from src.flakeranker import labeler, analyzer
+from src.flakeranker import labeler, analyzer, ranker
 
 
 @click.group(invoke_without_command=False)
@@ -63,21 +63,32 @@ def label(input_file: str, output_dir: str):
     required=True,
 )
 def analyze(input_file: str, output_dir: str):
-    """Analyze an INPUT_FILE labeled dataset of build jobs, output from the label sub-command."""
+    """Analyze an INPUT_FILE labeled dataset of build jobs, the output from the label sub-command.
+    
+    Outputs the RFM dataset of the categories.
+    """
     click.echo("Analyzing...")
-    output_file_path = os.path.join(output_dir, "rfm.csv")
+    output_file_path = os.path.join(output_dir, "rfm_dataset.csv")
     analyzer.analyze(input_file, output_file_path)
+    click.echo(click.style("Analysis successfully finished! ", fg="green"))
 
 
-@cli.command(help="Rank flaky job failure categories with RFM patterns.")
+@cli.command()
+@click.argument(
+    "input_file", type=click.Path(exists=True, dir_okay=False, readable=True)
+)
 @click.option(
     "-o",
     "--output-dir",
     type=click.Path(exists=True, file_okay=False, writable=True),
     required=True,
 )
-def rank():
+def rank(input_file: str, output_dir: str):
+    """Rank flaky job failure categories using an INPUT_FILE rfm dataset, the output of the analyze sub-command"""
     click.echo("Ranking...")
+    output_file_path = os.path.join(output_dir, "ranked_rfm_dataset.csv")
+    ranker.rank(input_file, output_file_path)
+    click.echo(click.style("Ranking successfully finished! ", fg="green"))
 
 
 if __name__ == "__main__":

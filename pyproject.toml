@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "flakeranker"
-version = "0.0.2"
+version = "0.0.3"
 description = "Understanding and Prioritizing Flaky Job Failure Categories"
 authors = ["Henri Aïdasso <ahenrij@gmail.com>"]
 readme = "example/README.md"

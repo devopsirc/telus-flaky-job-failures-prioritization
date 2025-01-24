@@ -16,12 +16,14 @@ As such, we claim the following badges:
 
 To conduct the study, we collected build job data from GitLab projects using the [python-gitlab](https://python-gitlab.readthedocs.io/en/stable/) package. For confidentiality reasons, the data collected from TELUS projects are not included. However, we prepared a build job dataset collected from the open-source project [Graphviz](https://gitlab.com/graphviz/graphviz) to demonstrate the **FlakeRanker** CLI tool's functionalities.
 
-## Requirements
+## Available Study Replication Package
+
+### Requirements
 
 - [Python](https://www.python.org/downloads/) >= 3.10
 - [Poetry](https://python-poetry.org/)
 
-## Getting started
+### Getting started
 
 Install dependencies
 
@@ -34,8 +36,6 @@ Create (or activate) virtual environment
 ```script
 poetry shell
 ```
-
-## Study Replication Package
 
 In the following, we reference Jupyter Notebooks present in this repository, that we used to answer the RQs.
 
@@ -51,7 +51,7 @@ In the following, we reference Jupyter Notebooks present in this repository, tha
 
 - RQ4. What are the priority flaky failure categories?
 
-## Additional Materials
+### Additional Materials
 
 The [`study/results/`](./study/results/) directory contains additional research results materials including:
 
@@ -60,3 +60,30 @@ The [`study/results/`](./study/results/) directory contains additional research 
 - Scatter plots of Recency vs Frequency, Frequency vs Monetary, and Recency vs Monetary values
 - Correlation matrix of RFM scores used for K-means clustering
 - Clustering model dump and clustering results.
+
+
+## Quickstart Reuse Example
+
+Install the `flakeranker` Python library.
+
+```sh
+pip install flakeranker
+```
+
+Unzip the prepared dataset. It outputs the `example/data/jobs.csv` file.
+
+```sh
+unzip example/data/jobs.zip
+```
+
+Run the experiment on the example dataset.
+
+```sh
+flakeranker example/data/jobs.csv --output=./example/results
+```
+
+**FlakeRanker** outputs the experiments results into the [example/results/](example/results/) directory, which includes:
+
+- `labeled_jobs.csv`: Labeled dataset of jobs produced by the labeler module.
+- `RFM.csv`: RFM dataset of flaky job failure categories produced by the analyzer module.
+- `ranks.csv`: Ranked RFM dataset including the cluster and RFM patterns produced by the ranker module.

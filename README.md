@@ -61,7 +61,17 @@ The [`study/results/`](./study/results/) directory contains additional research 
 - Correlation matrix of RFM scores used for K-means clustering
 - Clustering model dump and clustering results.
 
-## Quickstart Reuse Example
+## Installation
+
+We offer two approaches for `flakeranker` installation. We recommend building the Docker image.
+
+### Docker Image Build
+
+```sh
+docker build --tag flakeranker --file docker/Dockerfile .
+```
+
+### Python Package
 
 Install the **`flakeranker`** Python library.
 
@@ -69,13 +79,26 @@ Install the **`flakeranker`** Python library.
 pip install flakeranker
 ```
 
-Unzip the prepared dataset. It outputs the `example/data/jobs.csv` and `example/data/labeled_jobs.csv` file.
+## Quickstart Reuse Example
+
+**Unzip the prepared dataset.** It outputs the `example/data/jobs.csv` and `example/data/labeled_jobs.csv` file.
 
 ```sh
 unzip ./example/data/jobs.zip
 ```
 
-Run the experiment on the example dataset.
+**Run the experiment on the example dataset.**
+
+Using the Docker Image
+
+```sh
+docker run \
+-v ./example/data/labeled_jobs.csv:/opt/flakeranker/jobs.csv \
+-v ./example/results/:/opt/flakeranker/ \
+flakeranker run /opt/flakeranker/jobs.csv -o /opt/flakeranker/
+```
+
+Using the Python Package
 
 ```sh
 flakeranker run ./example/data/labeled_jobs.csv --o ./example/results/

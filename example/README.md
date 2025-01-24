@@ -15,10 +15,10 @@ This command outputs the `data/jobs.csv` file.
 ## Step 1. Label Dataset with FlakeRanker
 
 ```bash
-flakeranker label ./data/jobs.csv --output=./results/
+flakeranker label ./example/data/jobs.csv -o ./example/results/ 
 ```
 
-This command outputs the `results/labeled_jobs.csv` file containing 2 additional columns:
+This command outputs the `./example/results/labeled_jobs.csv` file containing 2 additional columns:
 
 - `flaky` (bool): Whether the job is flaky.
 - `category` (str): The category label for flaky job failures.

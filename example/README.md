@@ -70,3 +70,10 @@ This command outputs the sorted `results/ranked_rfm_dataset.csv` file containing
 - `M` (int): M score based on the quintile method
 - `cluster` (int): Cluster ID of the category. Similar categories found have the same cluster ID. An of -1 is assigned to identified outliers.
 - `pattern` (str): The RFM pattern serving as ranking of the category. E.g., R+F+M+ for a high priority category.
+
+
+To execute all the steps at once, use the following command.
+
+```sh
+flakeranker run ./data/jobs.csv -o ./results/
+```

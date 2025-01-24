@@ -103,7 +103,7 @@ flakeranker run /opt/flakeranker/jobs.csv -o /opt/flakeranker/
 Using the Python Package
 
 ```sh
-flakeranker run ./example/data/labeled_jobs.csv --o ./example/results/
+flakeranker run ./example/data/labeled_jobs.csv -o ./example/results/
 ```
 
 **FlakeRanker** outputs the experiments results into the [example/results/](example/results/) directory, including:

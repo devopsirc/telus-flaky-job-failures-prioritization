@@ -61,7 +61,6 @@ The [`study/results/`](./study/results/) directory contains additional research 
 - Correlation matrix of RFM scores used for K-means clustering
 - Clustering model dump and clustering results.
 
-
 ## Quickstart Reuse Example
 
 Install the `flakeranker` Python library.
@@ -70,20 +69,22 @@ Install the `flakeranker` Python library.
 pip install flakeranker
 ```
 
-Unzip the prepared dataset. It outputs the `example/data/jobs.csv` file.
+Unzip the prepared dataset. It outputs the `example/data/jobs.csv` and `example/data/labeled_jobs.csv` file.
 
 ```sh
-unzip example/data/jobs.zip
+unzip ./example/data/jobs.zip
 ```
 
 Run the experiment on the example dataset.
 
 ```sh
-flakeranker example/data/jobs.csv --output=./example/results
+flakeranker run ./example/data/labeled_jobs.csv --o ./example/results/
 ```
 
 **FlakeRanker** outputs the experiments results into the [example/results/](example/results/) directory, which includes:
 
 - `labeled_jobs.csv`: Labeled dataset of jobs produced by the labeler module.
-- `RFM.csv`: RFM dataset of flaky job failure categories produced by the analyzer module.
-- `ranks.csv`: Ranked RFM dataset including the cluster and RFM patterns produced by the ranker module.
+- `rmf_dataset.csv`: RFM dataset of flaky job failure categories produced by the analyzer module.
+- `ranked_rfm_dataset.csv`: Ranked RFM dataset including the cluster and RFM patterns produced by the ranker module. Outlier categories are affected to the cluster -1.
+
+For more details on each FlakeRanker sub-command, please read the [documentation](./example/README.md) in the example folder.

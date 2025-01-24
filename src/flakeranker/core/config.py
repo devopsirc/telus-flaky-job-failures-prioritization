@@ -18,13 +18,11 @@ class Settings(BaseSettings):
 
     model_config = ConfigDict(extra="allow")
 
-    PROJECT_NAME: str
+    CI_INFRASTRUCTURE_PRICING_RATE: float = 0.14  # the machine pricing rate in $/min
 
-    CI_INFRASTRUCTURE_PRICING_RATE: int = 0.14  # the machine pricing rate in $/min
+    DEVELOPER_HOURLY_RATE: float = 0.6 * 60  # salary in $/60 min
 
-    DEVELOPER_HOURLY_RATE: int = 0.6 * 60  # salary in $/60 min
-
-    RECENCY_REFERENCE_DATE: PastDate = date.today() - timedelta(milliseconds=1)
+    RECENCY_REFERENCE_DATE: PastDate = date.today() - timedelta(days=1)
 
     RECENCY_N_LAST: int = 3
 

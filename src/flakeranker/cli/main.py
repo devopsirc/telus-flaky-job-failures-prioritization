@@ -3,7 +3,7 @@
 import os
 import click
 
-from src.flakeranker import labeler
+from src.flakeranker import labeler, analyzer
 
 
 @click.group(invoke_without_command=False)
@@ -17,29 +17,33 @@ def cli(ctx):
 
 
 @cli.command(help="Run the complete FlakeRanker pipeline")
-@click.argument("input_file", type=click.Path(exists=True, dir_okay=False, readable=True))
+@click.argument(
+    "input_file", type=click.Path(exists=True, dir_okay=False, readable=True)
+)
 @click.option(
     "-o",
     "--output-dir",
     type=click.Path(exists=True, file_okay=False, writable=True),
     required=True,
 )
-def run(input:str, output:str):
+def run(input: str, output: str):
     label()
     analyze()
     rank()
 
 
 @cli.command()
-@click.argument("input_file", type=click.Path(exists=True, dir_okay=False, readable=True))
+@click.argument(
+    "input_file", type=click.Path(exists=True, dir_okay=False, readable=True)
+)
 @click.option(
     "-o",
     "--output-dir",
     type=click.Path(exists=True, file_okay=False, writable=True),
     required=True,
 )
-def label(input_file, output_dir):
-    """Label an INPUT_FILE .csv dataset of build jobs having required columns: 
+def label(input_file: str, output_dir: str):
+    """Label an INPUT_FILE .csv dataset of build jobs having required columns:
     `id`, `name`, `status`, `failure_reason`, `commit`, `created_at`, `finished_at`, `duration`, `logs`, `project`
     """
     click.echo("Labeling...")
@@ -48,15 +52,21 @@ def label(input_file, output_dir):
     labeler.label(input_file, output_file_path)
 
 
-@cli.command(help="Analyze a labeled dataset of build jobs. Requires input from label.")
+@cli.command()
+@click.argument(
+    "input_file", type=click.Path(exists=True, dir_okay=False, readable=True)
+)
 @click.option(
     "-o",
     "--output-dir",
     type=click.Path(exists=True, file_okay=False, writable=True),
     required=True,
 )
-def analyze():
+def analyze(input_file: str, output_dir: str):
+    """Analyze an INPUT_FILE labeled dataset of build jobs, output from the label sub-command."""
     click.echo("Analyzing...")
+    output_file_path = os.path.join(output_dir, "rfm.csv")
+    analyzer.analyze(input_file, output_file_path)
 
 
 @cli.command(help="Rank flaky job failure categories with RFM patterns.")

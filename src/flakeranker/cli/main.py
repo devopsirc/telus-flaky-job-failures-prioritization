@@ -16,7 +16,7 @@ def cli(ctx):
         pass
 
 
-@cli.command(help="Run the complete FlakeRanker pipeline")
+@cli.command()
 @click.argument(
     "input_file", type=click.Path(exists=True, dir_okay=False, readable=True)
 )
@@ -26,10 +26,10 @@ def cli(ctx):
     type=click.Path(exists=True, file_okay=False, writable=True),
     required=True,
 )
-def run(input: str, output: str):
-    label()
-    analyze()
-    rank()
+def run(input_file: str, output_dir: str):
+    rank.callback(
+        analyze.callback(label.callback(input_file, output_dir), output_dir), output_dir
+    )
 
 
 @cli.command()
@@ -50,6 +50,7 @@ def label(input_file: str, output_dir: str):
     input_file_base_name = os.path.basename(input_file)
     output_file_path = os.path.join(output_dir, f"labeled_{input_file_base_name}")
     labeler.label(input_file, output_file_path)
+    return output_file_path
 
 
 @cli.command()
@@ -64,13 +65,14 @@ def label(input_file: str, output_dir: str):
 )
 def analyze(input_file: str, output_dir: str):
     """Analyze an INPUT_FILE labeled dataset of build jobs, the output from the label sub-command.
-    
+
     Outputs the RFM dataset of the categories.
     """
     click.echo("Analyzing...")
     output_file_path = os.path.join(output_dir, "rfm_dataset.csv")
     analyzer.analyze(input_file, output_file_path)
     click.echo(click.style("Analysis successfully finished! ", fg="green"))
+    return output_file_path
 
 
 @cli.command()

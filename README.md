@@ -63,7 +63,7 @@ The [`study/results/`](./study/results/) directory contains additional research 
 
 ## Quickstart Reuse Example
 
-Install the `flakeranker` Python library.
+Install the **`flakeranker`** Python library.
 
 ```sh
 pip install flakeranker

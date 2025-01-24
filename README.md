@@ -14,7 +14,7 @@ As such, we claim the following badges:
 
 ## Data
 
-To conduct the study, we collected build job data from GitLab projects using the [python-gitlab](https://python-gitlab.readthedocs.io/en/stable/) package. For confidentiality reasons, the data collected from TELUS projects are not included. However, we prepared a build job dataset collected from the open-source project [Graphviz](https://gitlab.com/graphviz/graphviz) to demonstrate the **FlakeRanker** CLI tool's functionalities.
+To conduct the study, we collected build job data from GitLab projects using the [python-gitlab](https://python-gitlab.readthedocs.io/en/stable/) package. For confidentiality reasons, the data collected from TELUS projects are not included. However, we prepared a [build job dataset](./example/data/) collected from the open-source project [Veloren](https://gitlab.com/veloren/veloren) to demonstrate the **FlakeRanker** CLI tool's functionalities.
 
 ## Available Study Replication Package
 
@@ -61,17 +61,19 @@ The [`study/results/`](./study/results/) directory contains additional research 
 - Correlation matrix of RFM scores used for K-means clustering
 - Clustering model dump and clustering results.
 
-## Installation
+## FlakeRanker CLI Tool for Reuse
+
+### Installation
 
 We offer two approaches for `flakeranker` installation. We recommend building the Docker image.
 
-### Docker Image Build
+#### Docker Image Build
 
 ```sh
 docker build --tag flakeranker --file docker/Dockerfile .
 ```
 
-### Python Package
+#### Python Package
 
 Install the **`flakeranker`** Python library.
 
@@ -104,7 +106,7 @@ Using the Python Package
 flakeranker run ./example/data/labeled_jobs.csv --o ./example/results/
 ```
 
-**FlakeRanker** outputs the experiments results into the [example/results/](example/results/) directory, which includes:
+**FlakeRanker** outputs the experiments results into the [example/results/](example/results/) directory, including:
 
 - `labeled_jobs.csv`: Labeled dataset of jobs produced by the labeler module.
 - `rmf_dataset.csv`: RFM dataset of flaky job failure categories produced by the analyzer module.

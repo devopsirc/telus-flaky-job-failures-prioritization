@@ -27,6 +27,7 @@ def cli(ctx):
     required=True,
 )
 def run(input_file: str, output_dir: str):
+    """Run the complete prioritization pipeline. label => analyze => rank."""
     rank.callback(
         analyze.callback(label.callback(input_file, output_dir), output_dir), output_dir
     )
@@ -86,7 +87,7 @@ def analyze(input_file: str, output_dir: str):
     required=True,
 )
 def rank(input_file: str, output_dir: str):
-    """Rank flaky job failure categories using an INPUT_FILE rfm dataset, the output of the analyze sub-command"""
+    """Rank an INPUT_FILE rfm dataset of flaky job failure categories, the output of the analyze sub-command"""
     click.echo("Ranking...")
     output_file_path = os.path.join(output_dir, "ranked_rfm_dataset.csv")
     ranker.rank(input_file, output_file_path)

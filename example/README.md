@@ -56,7 +56,7 @@ This command outputs the `./results/rfm_dataset.csv` file containing the followi
 ### Step 3. Rank Categories using RFM Dataset
 
 ```bash
-flakeranker rank ./results/rfm_dataset.csv --output=./results/
+flakeranker rank ./results/rfm_dataset.csv -o ./results/
 ```
 
 This command outputs the sorted `results/ranked_rfm_dataset.csv` file containing the following columns:

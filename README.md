@@ -65,9 +65,9 @@ The [`study/results/`](./study/results/) directory contains additional research 
 
 ### Installation
 
-We offer two approaches for `flakeranker` installation. We recommend building the Docker image.
+We provide two options for intalling `flakeranker`. We recommend building the Docker image.
 
-#### Docker Image Build
+#### Build Docker Image
 
 ```sh
 docker build --tag flakeranker --file docker/Dockerfile .
@@ -75,7 +75,7 @@ docker build --tag flakeranker --file docker/Dockerfile .
 
 #### Python Package
 
-Install the **`flakeranker`** Python library.
+Install the [**`flakeranker`**](https://pypi.org/project/flakeranker) Python library.
 
 ```sh
 pip install flakeranker

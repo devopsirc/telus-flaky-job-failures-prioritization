@@ -6,12 +6,21 @@
 import sys
 import click
 import pandas as pd
+from datetime import date
 
+from src.flakeranker.core.config import settings
 from src.flakeranker.analyzer import utils as analyzer_utils
 from src.flakeranker import utils
 
 
-def analyze(input_file_path: str, output_file_path: str):
+def analyze(
+    input_file_path: str,
+    output_file_path: str,
+    cost_infra_pricing_rate: float = settings.COST_INFRA_PRICING_RATE,
+    cost_dev_hourly_rate: float = settings.COST_DEV_HOURLY_RATE,
+    recency_reference_date: date = settings.RECENCY_REFERENCE_DATE,
+    recency_n_last: int = settings.RECENCY_N_LAST,
+):
     """Takes as input the path to full `.csv` jobs dataset including labeled flaky jobs. Output of the `labeler`.
 
     Outputs: `categories.csv` including analysis results for each failure category as presented in the following columns.
@@ -64,24 +73,28 @@ def analyze(input_file_path: str, output_file_path: str):
     ##########################
     click.echo("Running monetary cost analysis...")
     # Machine
-    machine_costs = analyzer_utils.compute_categories_machine_costs(labeled_flaky_jobs)
+    machine_costs = analyzer_utils.compute_categories_machine_costs(
+        labeled_flaky_jobs, cost_infra_pricing_rate
+    )
     categories = utils.join_dfs(categories, machine_costs)
     # Diagnosis
     diagnosis_costs = analyzer_utils.compute_categories_diagnosis_costs(
-        jobs, labeled_flaky_jobs
+        jobs, labeled_flaky_jobs, cost_dev_hourly_rate
     )
     categories = utils.join_dfs(categories, diagnosis_costs)
     # Total Cost
-    categories["cost"] = (
-        categories["machine_cost"] + categories["diagnosis_cost"].fillna(0)
-    )
+    categories["cost"] = categories["machine_cost"] + categories[
+        "diagnosis_cost"
+    ].fillna(0)
     categories.drop_duplicates(inplace=True)
 
     ##########################
     #         Recency        #
     ##########################
     click.echo("Running recency analysis...")
-    recencies = analyzer_utils.compute_categories_recencies(labeled_flaky_jobs)
+    recencies = analyzer_utils.compute_categories_recencies(
+        labeled_flaky_jobs, recency_reference_date, recency_n_last
+    )
     categories = utils.join_dfs(categories, recencies)
 
     # Export

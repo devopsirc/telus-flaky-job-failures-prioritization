@@ -1,8 +1,8 @@
 """Settings."""
 
-from datetime import date, timedelta
+from datetime import date
 
-from pydantic import ConfigDict, PastDate
+from pydantic import ConfigDict
 from pydantic_settings import BaseSettings
 
 
@@ -18,11 +18,11 @@ class Settings(BaseSettings):
 
     model_config = ConfigDict(extra="allow")
 
-    CI_INFRASTRUCTURE_PRICING_RATE: float = 0.14  # the machine pricing rate in $/min
+    COST_INFRA_PRICING_RATE: float = 0.14  # the machine pricing rate in $/min
 
-    DEVELOPER_HOURLY_RATE: float = 0.6 * 60  # salary in $/60 min
+    COST_DEV_HOURLY_RATE: float = 0.6 * 60  # salary in $/60 min
 
-    RECENCY_REFERENCE_DATE: PastDate = date.today() - timedelta(days=1)
+    RECENCY_REFERENCE_DATE: date = date.today()
 
     RECENCY_N_LAST: int = 3
 

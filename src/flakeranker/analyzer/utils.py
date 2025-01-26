@@ -2,8 +2,8 @@
 
 import numpy as np
 import pandas as pd
+from datetime import date
 
-from src.flakeranker.core.config import settings
 from src.flakeranker import utils
 
 
@@ -27,11 +27,12 @@ def first_failure_category(row, labeled_flaky_jobs: pd.DataFrame):
             return None
 
 
-def recency(creation_dates):
+def recency(creation_dates, recency_reference_date, recency_n_last):
     dates = [x.to_pydatetime().date() for x in creation_dates]
     dates.sort()
-    last_n_dates = dates[-settings.RECENCY_N_LAST :]
-    recencies = [(settings.RECENCY_REFERENCE_DATE - d).days for d in last_n_dates]
+    last_n_dates = dates[-recency_n_last:]
+    reference_date = pd.to_datetime(recency_reference_date).normalize().date()
+    recencies = [(reference_date - d).days for d in last_n_dates]
     return round(np.mean(recencies))
 
 
@@ -58,7 +59,9 @@ def compute_diagnosis_time_delays(
     return flaky_reruns[["category", "delay"]]
 
 
-def compute_categories_machine_costs(labeled_flaky_jobs: pd.DataFrame):
+def compute_categories_machine_costs(
+    labeled_flaky_jobs: pd.DataFrame, cost_infra_pricing_rate: float
+):
     """Compute infrastructure cost per category."""
     results = (
         labeled_flaky_jobs[["category", "duration"]]
@@ -68,15 +71,13 @@ def compute_categories_machine_costs(labeled_flaky_jobs: pd.DataFrame):
     )
     results.columns = ["category", "duration"]
     results["machine_cost"] = results["duration"].apply(
-        lambda duration: round(
-            duration / 60 * settings.CI_INFRASTRUCTURE_PRICING_RATE, 2
-        )
+        lambda duration: round(duration / 60 * cost_infra_pricing_rate, 2)
     )  # by default duration is in seconds and the rate in minutes
     return results[["category", "machine_cost"]]
 
 
 def compute_categories_diagnosis_costs(
-    jobs: pd.DataFrame, labeled_flaky_jobs: pd.DataFrame
+    jobs: pd.DataFrame, labeled_flaky_jobs: pd.DataFrame, cost_dev_hourly_rate: float
 ):
     """Compute diagnosis time cost per category."""
     # Get all rerun suites' categores and diagnosis times.
@@ -86,18 +87,26 @@ def compute_categories_diagnosis_costs(
     # Compute results dataframe by apply formula
     results = flaky_reruns.groupby("category").sum().reset_index()
     results["diagnosis_cost"] = results["delay"].apply(
-        lambda delay: round(
-            delay.total_seconds() / 60 * settings.DEVELOPER_HOURLY_RATE / 60, 2
-        )
+        lambda delay: round(delay.total_seconds() / 60 * cost_dev_hourly_rate / 60, 2)
     )
     results["diagnosis_cost"] = results["diagnosis_cost"].fillna(0)
     return results[["category", "diagnosis_cost"]]
 
 
-def compute_categories_recencies(labeled_flaky_jobs: pd.DataFrame):
+def compute_categories_recencies(
+    labeled_flaky_jobs: pd.DataFrame,
+    recency_reference_date: date,
+    recency_n_last: float,
+):
     results = (
         labeled_flaky_jobs.groupby("category")
-        .agg({"created_at": recency})
+        .agg(
+            {
+                "created_at": lambda creation_dates: recency(
+                    creation_dates, recency_reference_date, recency_n_last
+                )
+            }
+        )
         .reset_index()
     )
     results.columns = ["category", "recency"]

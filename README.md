@@ -5,7 +5,9 @@ Understanding and Prioritizing Failure Categories](./PAPER.pdf) accepted at the 
 
 ## Purpose
 
-This replication package includes Jupyter Notebooks and full analysis results of the [study](./study/) to provide in-depth details of the analysis and foster replication. It also includes [flakeranker](./src/flakeranker/), an engineered version of the notebooks in a CLI tool to facilitate reuse of our approach for identifying and prioritizing flaky job failure categories based on RFM measures.
+This replication package includes Jupyter Notebooks and full analysis results of the [study](./study/) to provide in-depth details of the analysis and foster replication. 
+
+It also includes the [source code](./src/flakeranker/) of the [**flakeranker**](https://pypi.org/project/flakeranker) CLI tool. This tool is an engineered version of the notebook scripts to facilitate reuse of our RFM prioritization approach, through automated labeling of flaky job failures with failure categories and prioritization of the categories using RFM modeling.
 
 As such, we claim the following badges:
 
@@ -39,7 +41,7 @@ poetry shell
 
 ### Replication Package Content
 
-In the following, we reference Jupyter Notebooks present in this repository, that we used to answer the RQs.
+In the following, we present the Jupyter Notebooks included in this repository, that we used to answer the RQs.
 
 **PQ.** [Data Labeling Process](./study/data_labeling_process/02_failure_categories_labeling.ipynb)
 
@@ -67,7 +69,7 @@ The [`study/results/`](./study/results/) directory contains additional research 
 
 ### ⚙️ Installation
 
-We provide two options for intalling `flakeranker`. We recommend building the Docker image.
+We provide two options for intalling `flakeranker`.
 
 #### Build Docker Image (recommended)
 
@@ -101,7 +103,7 @@ We recommend running the experiment using the already labeled dataset for faster
 
 To further test the labeling processing on a clean dataset (which might take a while ~ 30 min), simply change the `labeled_jobs.csv` with the `jobs.csv` in the command.
 
-1. Using the Docker Image
+Using the Docker Image
 
 ```sh
 docker run \
@@ -110,7 +112,7 @@ docker run \
 flakeranker run /opt/flakeranker/jobs.csv -o /opt/flakeranker/
 ```
 
-2. Using the Python Package
+Using the Python Package
 
 ```sh
 flakeranker run ./example/data/veloren/labeled_jobs.csv -o ./example/results/

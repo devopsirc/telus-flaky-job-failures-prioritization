@@ -5,7 +5,7 @@ Understanding and Prioritizing Failure Categories](./PAPER.pdf) accepted at the 
 
 ## Purpose
 
-This replication package includes Jupyter Notebooks and full analysis results of the [study](./study/) to provide in-depth details of the analysis and foster replication. 
+This replication package includes Jupyter Notebooks and full analysis results of the [study](./study/) to provide in-depth details of the analysis and foster replication.
 
 It also includes the [source code](./src/flakeranker/) of the [**flakeranker**](https://pypi.org/project/flakeranker) CLI tool. This tool is an engineered version of the notebook scripts to facilitate reuse of our RFM prioritization approach, through automated labeling of flaky job failures with failure categories and prioritization of the categories using RFM modeling.
 

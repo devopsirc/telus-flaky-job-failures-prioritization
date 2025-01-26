@@ -14,7 +14,7 @@ As such, we claim the following badges:
 
 ## Data
 
-To conduct the study, we collected build job data from GitLab projects using the [python-gitlab](https://python-gitlab.readthedocs.io/en/stable/) package. For confidentiality reasons, the data collected from TELUS projects are not included. However, we prepared a [build job dataset](./example/data/) collected from the open-source project [Veloren](https://gitlab.com/veloren/veloren) to demonstrate the **FlakeRanker** CLI tool's functionalities.
+To conduct the study, we collected build job data from GitLab projects using the [python-gitlab](https://python-gitlab.readthedocs.io/en/stable/) package. For confidentiality reasons, the data collected from TELUS projects are not included. However, we prepared a build job [dataset](./example/data/) collected from the open-source project [Veloren](https://gitlab.com/veloren/veloren) to demonstrate the **FlakeRanker** CLI tool's functionalities.
 
 ## Available Study Replication Package
 
@@ -37,6 +37,8 @@ Create (or activate) virtual environment
 poetry shell
 ```
 
+### Replication Package Content
+
 In the following, we reference Jupyter Notebooks present in this repository, that we used to answer the RQs.
 
 **PQ.** [Data Labeling Process](./study/data_labeling_process/02_failure_categories_labeling.ipynb)
@@ -51,7 +53,7 @@ In the following, we reference Jupyter Notebooks present in this repository, tha
 
 - RQ4. What are the priority flaky failure categories?
 
-### Additional Materials
+#### Additional Study Materials
 
 The [`study/results/`](./study/results/) directory contains additional research results materials including:
 
@@ -63,17 +65,19 @@ The [`study/results/`](./study/results/) directory contains additional research 
 
 ## FlakeRanker CLI Tool for Reuse
 
-### Installation
+### ⚙️ Installation
 
 We provide two options for intalling `flakeranker`. We recommend building the Docker image.
 
-#### Build Docker Image
+#### Build Docker Image (recommended)
+
+Clone this repository. In the root directory, run the following command.
 
 ```sh
 docker build --tag flakeranker --file docker/Dockerfile .
 ```
 
-#### Python Package
+#### Install Python Package
 
 Install the [**`flakeranker`**](https://pypi.org/project/flakeranker) Python library.
 
@@ -81,35 +85,41 @@ Install the [**`flakeranker`**](https://pypi.org/project/flakeranker) Python lib
 pip install flakeranker
 ```
 
-## Quickstart Reuse Example
+## 🚀 Quickstart Reuse Example
 
-**Unzip the prepared dataset.** It outputs the `example/data/jobs.csv` and `example/data/labeled_jobs.csv` file.
+### Unzip the example dataset
 
 ```sh
-unzip ./example/data/jobs.zip
+unzip example/data/veloren.zip example/data/
 ```
 
-**Run the experiment on the example dataset.**
+It outputs inside the `example/data/veloren/` directory, the `jobs.csv` and `labeled_jobs.csv` files.
 
-Using the Docker Image
+### Run the experiment on the example dataset
+
+We recommend running the experiment using the already labeled dataset for faster execution. To do so, simply copy and run the following command depending on your installation choice.
+
+To further test the labeling processing on a clean dataset (which might take a while ~ 30 min), simply change the `labeled_jobs.csv` with the `jobs.csv` in the command.
+
+1. Using the Docker Image
 
 ```sh
 docker run \
--v ./example/data/labeled_jobs.csv:/opt/flakeranker/jobs.csv \
+-v ./example/data/veloren/labeled_jobs.csv:/opt/flakeranker/jobs.csv \
 -v ./example/results/:/opt/flakeranker/ \
 flakeranker run /opt/flakeranker/jobs.csv -o /opt/flakeranker/
 ```
 
-Using the Python Package
+2. Using the Python Package
 
 ```sh
-flakeranker run ./example/data/labeled_jobs.csv -o ./example/results/
+flakeranker run ./example/data/veloren/labeled_jobs.csv -o ./example/results/
 ```
 
-**FlakeRanker** outputs the experiments results into the [example/results/](example/results/) directory, including:
+**FlakeRanker CLI** outputs the experiments results into the [example/results/](example/results/) directory as follows:
 
 - `labeled_jobs.csv`: Labeled dataset of jobs produced by the labeler module.
-- `rmf_dataset.csv`: RFM dataset of flaky job failure categories produced by the analyzer module.
-- `ranked_rfm_dataset.csv`: Ranked RFM dataset including the cluster and RFM patterns produced by the ranker module. Outlier categories are affected to the cluster -1.
+- `rfm_dataset.csv`: RFM dataset of flaky job failure categories produced by the analyzer module.
+- `ranked_rfm_dataset.csv`: Ranked RFM dataset including the scores, cluster, and pattern produced by the ranker module. Outlier categories are affected to the cluster -1.
 
-For more details on each FlakeRanker sub-command, please read the [documentation](./example/README.md) in the example folder.
+For more details on each FlakeRanker sub-command, please read the [detailed documentation](./example/README.md) in the example folder.

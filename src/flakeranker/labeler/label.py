@@ -77,9 +77,9 @@ def label(input_file_path: str, output_file_path: str):
     )
 
     # Join labeled job to the full dataset
-    df = utils.join_dfs(
-        df.drop(columns="category"), flaky_job_failures[["id", "category"]], key="id"
-    )
+    if "category" in df.columns:
+        df.drop(columns="category", inplace=True)
+    df = utils.join_dfs(df, flaky_job_failures[["id", "category"]], key="id")
     labeled_df = df[~df["category"].isna()]
 
     # Export

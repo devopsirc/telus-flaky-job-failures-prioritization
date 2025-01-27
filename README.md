@@ -7,7 +7,7 @@ Understanding and Prioritizing Failure Categories](./PAPER.pdf) accepted at the 
 
 This replication package includes Jupyter Notebooks and full analysis results of the [study](./study/) to provide in-depth details of the analysis and foster replication.
 
-It also includes the [source code](./src/flakeranker/) of the [**flakeranker**](https://pypi.org/project/flakeranker) CLI tool. This tool is an engineered version of the notebook scripts to facilitate reuse of our RFM prioritization approach, through automated labeling of flaky job failures with failure categories and prioritization of the categories using RFM modeling.
+It also includes the [source code](./src/flakeranker/) of the **FlakeRanker** CLI tool. This tool is an engineered version of the notebook scripts to facilitate reuse of our RFM prioritization approach, through automated labeling of flaky job failures with failure categories and prioritization of the categories using RFM modeling.
 
 As such, we claim the following badges:
 
@@ -16,7 +16,7 @@ As such, we claim the following badges:
 
 ## Data
 
-To conduct the study, we collected build job data from GitLab projects using the [python-gitlab](https://python-gitlab.readthedocs.io/en/stable/) package. For confidentiality reasons, the data collected from TELUS projects are not included. However, we prepared a build job [dataset](./example/data/) collected from the open-source project [Veloren](https://gitlab.com/veloren/veloren) to demonstrate the **FlakeRanker** CLI tool's functionalities.
+To conduct the study, we collected build job data from GitLab projects using the **python-gitlab** library. For confidentiality reasons, the data collected from TELUS projects are not included. However, we prepared a build job [dataset](./example/data/) collected from the open-source project _Veloren_ to demonstrate the **FlakeRanker** CLI tool's functionalities.
 
 ## Available Study Replication Package
 
@@ -39,9 +39,9 @@ Create (or activate) virtual environment
 poetry shell
 ```
 
-### Replication Package Content
+### Content
 
-In the following, we present the Jupyter Notebooks included in this repository, that we used to answer the RQs.
+We list the Jupyter Notebooks used to answer the RQs and included in this repository.
 
 **PQ.** [Data Labeling Process](./study/data_labeling_process/02_failure_categories_labeling.ipynb)
 
@@ -71,7 +71,7 @@ The [`study/results/`](./study/results/) directory contains additional research 
 
 We provide two options for intalling `flakeranker`.
 
-#### Build Docker Image (recommended)
+#### 1. Build Docker Image (recommended)
 
 Clone this repository. In the root directory, run the following command.
 
@@ -79,7 +79,7 @@ Clone this repository. In the root directory, run the following command.
 docker build --tag flakeranker --file docker/Dockerfile .
 ```
 
-#### Install Python Package
+#### 2. Install Python Package
 
 Install the [**`flakeranker`**](https://pypi.org/project/flakeranker) Python library.
 
@@ -92,7 +92,7 @@ pip install flakeranker
 ### Unzip the example dataset
 
 ```sh
-unzip example/data/veloren.zip example/data/
+unzip example/data/veloren.zip -d example/data/
 ```
 
 It outputs inside the `example/data/veloren/` directory, the `jobs.csv` and `labeled_jobs.csv` files.

@@ -27,7 +27,7 @@ For demonstration purpose, we provide in the `example/data/` directory, a .csv d
 ### Step 0. Unzip the Dataset
 
 ```bash
-unzip example/data/veloren.zip example/data/
+unzip example/data/veloren.zip -d example/data/
 ```
 
 It outputs inside the `example/data/veloren/` directory, the `jobs.csv` and `labeled_jobs.csv` files.

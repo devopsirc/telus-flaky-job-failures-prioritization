@@ -125,3 +125,15 @@ flakeranker run ./example/data/veloren/labeled_jobs.csv -o ./example/results/
 - `ranked_rfm_dataset.csv`: Ranked RFM dataset including the scores, cluster, and pattern produced by the ranker module. Outlier categories are affected to the cluster -1.
 
 For more details on each FlakeRanker sub-command, please read the [documentation](./example/README.md) also available on the [official page](https://pypi.org/project/flakeranker/) of the flakeranker python package.
+
+## Citation
+
+```bibtex
+@inproceedings{aidasso_diagnosis_2025,
+  Author = {Aïdasso, Henri and Bordeleau, Francis and Tizghadam, Ali},
+  Title = {On the {Diagnosis} of {Flaky} {Job} {Failures}: {Understanding} and {Prioritizing} {Failure} {Categories}},
+  Year = {2025},
+  Booktitle = {Proceedings of 2025 {IEEE}/{ACM} 47th {International} {Conference} on {Software} {Engineering} ({ICSE})},
+  Pages = {To appear}
+}
+```

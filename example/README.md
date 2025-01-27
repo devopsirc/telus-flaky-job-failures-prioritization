@@ -164,7 +164,7 @@ flakeranker --help
   Author = {Aïdasso, Henri and Bordeleau, Francis and Tizghadam, Ali},
   Title = {On the {Diagnosis} of {Flaky} {Job} {Failures}: {Understanding} and {Prioritizing} {Failure} {Categories}},
   Year = {2025},
-  Booktitle = {2025 {IEEE}/{ACM} 47th {International} {Conference} on {Software} {Engineering} ({ICSE})},
+  Booktitle = {Proceedings of 2025 {IEEE}/{ACM} 47th {International} {Conference} on {Software} {Engineering} ({ICSE})},
   Pages = {To appear}
 }
 ```

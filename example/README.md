@@ -27,7 +27,7 @@ For demonstration purpose, we provide in the `example/data/` directory, a .csv d
 ### Step 0. Unzip the Dataset
 
 ```bash
-unzip example/data/veloren.zip example/data/
+unzip example/data/veloren.zip -d example/data/
 ```
 
 It outputs inside the `example/data/veloren/` directory, the `jobs.csv` and `labeled_jobs.csv` files.
@@ -155,4 +155,16 @@ Using the Python Package
 
 ```sh
 flakeranker --help
+```
+
+## Citation
+
+```bibtex
+@inproceedings{aidasso_diagnosis_2025,
+  Author = {Aïdasso, Henri and Bordeleau, Francis and Tizghadam, Ali},
+  Title = {On the {Diagnosis} of {Flaky} {Job} {Failures}: {Understanding} and {Prioritizing} {Failure} {Categories}},
+  Year = {2025},
+  Booktitle = {2025 {IEEE}/{ACM} 47th {International} {Conference} on {Software} {Engineering} ({ICSE})},
+  Pages = {To appear}
+}
 ```

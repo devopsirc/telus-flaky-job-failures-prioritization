@@ -101,7 +101,7 @@ It outputs inside the `example/data/veloren/` directory, the `jobs.csv` and `lab
 
 We recommend running the experiment using the already labeled dataset for faster execution. To do so, simply copy and run the following command depending on your installation choice.
 
-To further test the labeling processing on a clean dataset (which might take a while ~ 30 min), simply change the `labeled_jobs.csv` with the `jobs.csv` in the command.
+To further test the labeling processing on a clean dataset (which might take a while ~ 25 min on our Ubuntu 22.04 RAM 16GB Dual Core i7 2.80GHz), simply change `labeled_jobs.csv` with `jobs.csv` in the command.
 
 Using the Docker Image
 

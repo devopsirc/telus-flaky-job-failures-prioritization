@@ -10,7 +10,7 @@ ARG POETRY_VERSION=1.7.1
 #
 # Stage: staging
 #
-FROM python:$PYTHON_VERSION-slim as staging
+FROM python:$PYTHON_VERSION-slim AS staging
 ARG APP_NAME
 ARG APP_PATH
 ARG POETRY_VERSION
@@ -43,7 +43,7 @@ COPY ./example/README.md ./example/
 #
 # Stage: build
 #
-FROM staging as build
+FROM staging AS build
 ARG APP_PATH
 
 WORKDIR $APP_PATH
@@ -53,7 +53,7 @@ RUN poetry export --format requirements.txt --output constraints.txt --without-h
 #
 # Stage: production
 #
-FROM python:$PYTHON_VERSION-slim as production
+FROM python:$PYTHON_VERSION-slim AS production
 ARG APP_NAME
 ARG APP_PATH
 

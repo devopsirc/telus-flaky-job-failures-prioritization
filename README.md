@@ -22,7 +22,7 @@ To conduct the study, we collected build job data from GitLab projects using the
 
 ### Content
 
-We provide the Jupyter Notebooks used to answer the RQs. These notebooks are not directly exercisable and are for read-only purpose. For reuse of our approach, please go to the section **FlakeRanker CLI Tool for Reuse** below.
+We provide the Jupyter Notebooks used to answer the RQs. These notebooks are not directly exercisable and are for read-only purpose. For reuse of our approach, please go to the section **`FlakeRanker CLI Tool for Reuse`** below.
 
 **PQ.** [Data Labeling Process](./study/data_labeling_process/02_failure_categories_labeling.ipynb)
 

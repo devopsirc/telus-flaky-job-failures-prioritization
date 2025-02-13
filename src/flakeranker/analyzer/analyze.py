@@ -72,12 +72,12 @@ def analyze(
     #      Monetary Cost     #
     ##########################
     click.echo("Running monetary cost analysis...")
-    # Machine
+    # Machine Cost
     machine_costs = analyzer_utils.compute_categories_machine_costs(
         labeled_flaky_jobs, cost_infra_pricing_rate
     )
     categories = utils.join_dfs(categories, machine_costs)
-    # Diagnosis
+    # Diagnosis Cost
     diagnosis_costs = analyzer_utils.compute_categories_diagnosis_costs(
         jobs, labeled_flaky_jobs, cost_dev_hourly_rate
     )

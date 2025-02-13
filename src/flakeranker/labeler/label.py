@@ -49,18 +49,18 @@ def label(input_file_path: str, output_file_path: str):
 
     # label flakiness
     click.echo("Adding column `flaky`...")
+    ## list all the rerun suite containing at least one success and one failed run.
     flaky_reruns = utils.list_flaky_rerun_suites(df)
-    flaky_job_ids = list(itertools.chain(*flaky_reruns["id"].to_list()))
+    flaky_job_ids = list(itertools.chain(*flaky_reruns["id"].to_list())) 
     df["flaky"] = df.progress_apply(lambda job: job["id"] in flaky_job_ids, axis=1)
 
-    # label on flaky job failure with categories
+    # label flaky job failure with categories
     click.echo("Adding column `category`...")
-
+    ## load the patterns of regex for identifying the categories of flaky job failures
     patterns = pd.read_csv(os.path.join(CURRENT_DIRNAME, "patterns.csv"))
     click.echo(
         click.style(f"Patterns loaded. {patterns.shape[0]} patterns.", fg="green")
     )
-
     flaky_job_failures = df[df["flaky"] & (df["status"] == "failed")]
     click.echo(
         click.style(
@@ -68,9 +68,10 @@ def label(input_file_path: str, output_file_path: str):
             bold=True,
         )
     )
-
+    ## initialize column `category` to `None` values, if not exists
     if "category" not in flaky_job_failures.columns:
         flaky_job_failures["category"] = None
+    ## Run find_category method to assign a category to the job based on logs
     flaky_job_failures["logs"] = flaky_job_failures["logs"].astype(str)
     flaky_job_failures["category"] = flaky_job_failures.progress_apply(
         lambda job: find_category(job, patterns), axis=1

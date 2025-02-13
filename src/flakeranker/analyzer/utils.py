@@ -8,16 +8,22 @@ from src.flakeranker import utils
 
 
 def first_failure_finition_date(row):
+    """Returns the finition timestamp of the first failure in the rerun suite `row`."""
     for i, status in enumerate(row["status"]):
         if status == "failed":
             return row["finished_at"][i]
 
 
 def last_job_finition_date(row):
+    """Returns the finition timestamp of the last executed job in the rerun suite `row`."""
     return max(row["finished_at"])
 
 
 def first_failure_category(row, labeled_flaky_jobs: pd.DataFrame):
+    """Returns the `category` of the the first failure in the rerun suite.
+
+    This category is considered as the failure `category` of the rerun suite to estimate diagnosis time waste.
+    """
     indexed_labeled_flaky_jobs = labeled_flaky_jobs.copy(deep=True).set_index("id")
     for i, status in enumerate(row["status"]):
         if status == "failed":
@@ -46,7 +52,7 @@ def compute_diagnosis_time_delays(
     )
     flaky_reruns = flaky_reruns[~flaky_reruns["category"].isnull()]
 
-    # Calculate each diagnosis delay component
+    # Calculate each diagnosis delay component based on the Eq2 in the paper.
     flaky_reruns["first_failure_finished_at"] = flaky_reruns.apply(
         first_failure_finition_date, axis=1
     )

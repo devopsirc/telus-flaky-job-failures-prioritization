@@ -36,7 +36,7 @@ We provide the Jupyter Notebooks used to answer the RQs. These notebooks are not
 
 - RQ4. What are the priority flaky failure categories?
 
-### Additional Study Materials
+#### Additional Study Materials
 
 The [`study/results/`](./study/results/) directory contains additional research results materials including:
 

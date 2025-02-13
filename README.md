@@ -105,7 +105,7 @@ flakeranker run ./example/data/veloren/labeled_jobs.csv -o ./example/results/
 - `rfm_dataset.csv`: RFM dataset of flaky job failure categories produced by the analyzer module.
 - `ranked_rfm_dataset.csv`: Ranked RFM dataset including the scores, cluster, and pattern produced by the ranker module. Outlier categories are affected to the cluster -1.
 
-### FlakeRanker Documentation
+#### FlakeRanker Documentation
 
 For more details on each FlakeRanker sub-command, please read the [documentation](./example/README.md) also available on the [official page](https://pypi.org/project/flakeranker/) of the flakeranker python package.
 

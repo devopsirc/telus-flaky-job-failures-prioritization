@@ -20,28 +20,9 @@ To conduct the study, we collected build job data from GitLab projects using the
 
 ## Available Study Replication Package
 
-### Requirements
-
-- [Python](https://www.python.org/downloads/) >= 3.10
-- [Poetry](https://python-poetry.org/)
-
-### Getting started
-
-Install dependencies
-
-```script
-poetry install
-```
-
-Create (or activate) virtual environment
-
-```script
-poetry shell
-```
-
 ### Content
 
-We list the Jupyter Notebooks used to answer the RQs and included in this repository.
+We provide the Jupyter Notebooks used to answer the RQs. These notebooks are not directly exercisable and are for read-only purpose. For reuse of our approach, please go to the section **FlakeRanker CLI Tool for Reuse** below.
 
 **PQ.** [Data Labeling Process](./study/data_labeling_process/02_failure_categories_labeling.ipynb)
 
@@ -55,7 +36,7 @@ We list the Jupyter Notebooks used to answer the RQs and included in this reposi
 
 - RQ4. What are the priority flaky failure categories?
 
-#### Additional Study Materials
+### Additional Study Materials
 
 The [`study/results/`](./study/results/) directory contains additional research results materials including:
 

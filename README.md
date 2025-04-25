@@ -5,14 +5,9 @@ Understanding and Prioritizing Failure Categories](./PAPER.pdf) accepted at the 
 
 ## Purpose
 
-This replication package includes Jupyter Notebooks and full analysis results of the [study](./study/) to provide in-depth details of the analysis and foster replication.
+This replication package includes Jupyter Notebooks and full analysis results of the [notebooks](./notebooks/) to provide in-depth details of the analysis and foster replication.
 
 It also includes the [source code](./src/flakeranker/) of the **FlakeRanker** CLI tool. This tool is an engineered version of the notebook scripts to facilitate reuse of our RFM prioritization approach, through automated labeling of flaky job failures with failure categories and prioritization of the categories using RFM modeling.
-
-As such, we claim the following badges:
-
-- `Available`
-- `Reusable`
 
 ## Data
 
@@ -24,21 +19,21 @@ To conduct the study, we collected build job data from GitLab projects using the
 
 We provide the Jupyter Notebooks used to answer the RQs. These notebooks are not directly exercisable and are for read-only purpose. For reuse of our approach, please go to the section **`FlakeRanker CLI Tool for Reuse`** below.
 
-**PQ.** [Data Labeling Process](./study/data_labeling_process/02_failure_categories_labeling.ipynb)
+**PQ.** [Data Labeling Process](./notebooks/data_labeling_process/02_failure_categories_labeling.ipynb)
 
-**RQ1-3.** [RFM Analysis](./study/rfm_analysis/03_label_prioritization.ipynb)
+**RQ1-3.** [RFM Analysis](./notebooks/rfm_analysis/03_label_prioritization.ipynb)
 
 - RQ1. What are the main categories of flaky failures?
 - RQ2. Which failure categories are the most costly?
 - RQ3. How do the failure categories evolve over time?
 
-**RQ4.** [RFM Modeling and Prioritization](./study/rfm_prioritization/04_categories_rfm_prioritization.ipynb)
+**RQ4.** [RFM Modeling and Prioritization](./notebooks/rfm_prioritization/04_categories_rfm_prioritization.ipynb)
 
 - RQ4. What are the priority flaky failure categories?
 
 #### Additional Study Materials
 
-The [`study/results/`](./study/results/) directory contains additional research results materials including:
+The [`notebooks/results/`](./notebooks/results/) directory contains additional research results materials including:
 
 - Full figures of categories evolution and related costs
 - Computed RFM values and scores

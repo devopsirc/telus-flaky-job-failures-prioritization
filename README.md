@@ -3,6 +3,8 @@
 Replication package of the paper [On the Diagnosis of Flaky Job Failures:
 Understanding and Prioritizing Failure Categories](./PAPER.pdf) accepted at the 47th International Conference on Software Engineering ICSE SEIP 2025.
 
+Awarded the **Available**, **Functional**, and **Reusable** badges at ICSE 25, Artifact Track.
+
 ## Purpose
 
 This replication package includes Jupyter Notebooks and full analysis results of the [notebooks](./notebooks/) to provide in-depth details of the analysis and foster replication.
